@@ -4,7 +4,7 @@
   "description": "A Karma plugin. Launcher for Domino",
   "main": "index.js",
   "scripts": {
-    "clean-install": "rm -rf node_modules/ && npm install && ln -s ../ node_modules/karma-domino-launcher",
+    "clean-install": "rm -rf node_modules/ && yarn && ln -s ../ node_modules/karma-domino-launcher",
     "test": "mocha --timeout 10000 --slow 5000"
   },
   "repository": {
