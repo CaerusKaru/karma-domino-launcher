@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "clean-install": "rm -rf node_modules/ && yarn && ln -s ../ node_modules/karma-domino-launcher",
-    "test": "mocha --timeout 10000 --slow 5000"
+    "test": "mocha --timeout 10000000 --slow 5000",
+    "test-brk": "mocha --inspect-brk --timeout 10000 --slow 5000"
   },
   "repository": {
     "type": "git",

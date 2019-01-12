@@ -31,15 +31,13 @@ async function createKarmaTest(testFunction) { // jshint ignore:line
     files:         [tmpTestFile],
     frameworks:    ['mocha'],
     browsers:      ['domino'],
-    singleRun:     true
+    singleRun:     true,
   };
 
   // jshint ignore:start
   await writeFile(tmpTestFile, `
     it('dummy description', ${testFunction.toString()});
   `);
-
-  console.log(tmpTestFile);
 
   await interceptStdout({ passthrough: COPY_KARMA === '1' }, () => {
     return new Promise((resolve, reject) => {

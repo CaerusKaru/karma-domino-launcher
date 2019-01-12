@@ -18,9 +18,17 @@ const dominoBrowser = function(baseBrowserDecorator) {
     const karmaFileName = fullUrl.origin + '/karma.js';
     const socketFile = await request(socketFileName); // jshint ignore:line
     const karmaFile = await request(karmaFileName); // jshint ignore:line
-    console.log({socketFile, karmaFile});
+
     vm.runInContext(socketFile, window, { filename: socketFileName, displayErrors: true });
     vm.runInContext(karmaFile, window, { filename: karmaFileName, displayErrors: true });
+
+    const newSocket = fullUrl.origin + window.document.getElementsByTagName('script')[0].getAttribute('src').substring(7);
+
+    const newSocketFile = await request(newSocket); // jshint ignore:line
+    vm.runInContext(newSocketFile, window, { filename: newSocket, displayErrors: true});
+
+    // console.log(window.document.serialize());
+    // console.log(newSocketFile);
   };
 
   this.on('kill', (done) => {
